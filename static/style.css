@@ -1,0 +1,371 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ul, nav{
+    list-style: none;
+}
+dt{
+    display: inline-block;
+    text-align: left;
+    margin: 1em 1em;
+    font-weight: bold;
+}
+dd{
+    display: inline;
+    text-align: left;
+    margin: 1em 1em;
+    font-weight: bold;
+}
+h3{
+    text-align: center;
+    padding: 1em;
+}
+textarea{
+    padding: 0.5em;
+    margin: 1em 1em 1em 1em;
+}
+select{
+    min-width: 100px;
+    text-align: center;
+    margin: 1em;
+}
+hr{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+}
+header, footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 20px 100px;
+}
+header h1{
+    text-transform: capitalize;
+}
+header nav ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+header nav ul li, footer ul li{
+    margin: 0 15px;
+}
+header nav ul li:first-child{
+    margin-left: 0;
+}
+header nav ul li:last-child{
+    margin-right: 0;
+}
+header nav a:hover{
+    background-color: crimson;
+    transition: 0.2s ease-out;
+}
+.username{
+    text-transform: uppercase;
+}
+.username:hover > ul{
+    display: block;
+}
+.dropdown{
+    text-transform: capitalize;
+    display: none;
+}
+.dropdown li{
+    margin: 5px 5px 5px 0px;
+    padding: 5px 5px 5px 5px;
+    background-color: #000;
+}
+header nav ul ul{
+    position: absolute;
+    offset: show;
+    z-index: 1;
+}
+
+/* For home page banner */
+.class-area{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: left;
+    min-height: 77vh;
+    color: white;
+    text-align: center;
+    padding: 2em;
+}
+.banner-area{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    min-height: 77vh;
+    color: white;
+    text-align: center;
+    padding: 2em;
+}
+.banner-area h2, .class-area h2, .testimonial-area h2, .info-area h2, .about-area h2{
+    text-transform: uppercase;
+}
+.banner-area h3, .class-area h3, .testimonial-area h3, .info-area h3{
+    text-transform: capitalize;
+}
+
+.banner-area, .banner-img:after, .class-area, .class-img::after, .info-area{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .8;
+}
+.banner-area h2, .class-area h2{
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.253);
+}
+.banner-area h3, .class-area h3{
+    font-size: 25px;
+    background: rgba(0, 0, 0, 0.253);
+}
+a.banner-btn, .about-btn{
+    padding: 15px 35px;
+    background: crimson;
+    border-radius: 50px;
+    text-transform: uppercase;
+    color: white;
+}
+.add-task{
+    float: right;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.80);
+    color: white;
+    margin: 0em 3em;
+    padding: 1em;
+}
+.add-user{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.80);
+    color: white;
+    margin: 0em 3em;
+    padding: 1em;
+}
+.task-table{
+    text-align: center;
+    padding: 1em;
+    margin: 1em 2em;
+}
+.box-area, .wrapper{
+    padding: 2em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    max-width: fit-content;
+}
+
+.single-box, .box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: fit-content;
+    height: auto;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.637);
+    color: white;
+    text-align: left;
+    margin: 20px;
+    padding: 20px;
+    transition: .3s;
+}
+.single-box:hover, .box:hover{
+    background-color: black;
+    color: white;
+    transition: 0.3s ease-out;
+}
+.form{
+    background-color: black;
+    padding: 1em;
+    align-items: center;
+    justify-content: left;
+    height: auto;
+    max-width: fit-content;
+    border-radius: 4px;
+    color: white;
+    text-align: left;
+    margin: 20px;
+    margin-left: 2.5em;
+    padding: 20px;
+    transition: .3s;
+    float: left;
+}
+table{
+    text-align: center;
+}
+th, td, tr{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+tr:hover{
+    background-color: aliceblue;
+}
+.table{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    min-height: 35vh;
+}
+.form h2, .add-vehicle-form h2, .edit-vehicle-form h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    background-color: black;
+    color: crimson;
+}
+.form label, label{
+    display: inline-block;
+    min-width: 135px;
+    vertical-align: center;
+    color: white;
+}
+.not_assigned{
+    background-color: rgba(220, 20, 60, 0.522);
+}
+.formbutton{
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: #fff;
+    border-style: none;
+    font-size: 1em;
+    min-width: 80px;
+    max-width: max-content;
+    align-self: center;
+}
+.formbutton:hover{
+    background-color: crimson;
+    color: #fff;
+    transition: 0.2s ease-out;
+}
+#formbuttonEdit:hover{
+    background-color: darkgreen;
+    color: #fff;
+    transition: 0.2s ease-out;
+}
+.form select, input, input[type=number], select{
+    padding: 0.5em;
+    margin: 0.5em;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+@media(max-width: 1000px){
+    header{
+        padding: 20px 50px;
+    }
+    .section{
+        padding: 100px 50px ;
+    }
+    .section h3, .section h2, .section p{
+        max-width: 800px;
+        text-align: center;
+        margin-bottom: 35px;
+        padding: 20px 20px;
+        line-height: 2;
+    }
+    .about-left, .about-right{
+        flex-basis: 100%;
+    }
+    .about-content li{
+        padding: 8px;
+    }
+}
+@media(max-width: 830px){
+    header, footer{
+        flex-direction: column;
+    }
+    header h1{
+        margin-bottom: 15px;
+    }
+    header nav ul li, footer ul li{
+        margin: 0 7px;
+        text-align: center;
+    }
+    .section{
+        padding: 125px 30px;
+    }
+    .section h3, .section h2, .section p{
+        max-width: 800px;
+        text-align: center;
+        margin-bottom: 35px;
+        padding: 0px 20px;
+        line-height: 2;
+    }
+    .banner-area, .banner-img{
+        background-image: url(../images/boxfit2.JPG);
+    }
+    .about-right{
+        text-align: center;
+    }
+}
+@media(max-width: 800px){
+    .banner-area, .class-area{
+        min-height: 600px;
+    }
+    .banner-area h2, .class-area h2, .testimonial-area h2{
+        font-size: 32px;
+    }
+    .banner-area h3, .class-area h3, .testimonial-area h3{
+        font-size: 20px;
+    }
+    .banner-area a.banner-btn{
+        padding: 15px 40px;
+    }
+}
