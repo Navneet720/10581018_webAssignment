@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block main %}
+<main>
+    <section class="banner-area">
+        <div style="padding: 1em; text-align: left; margin-left: 5em;">
+            <p style="margin: 1em;">Username: {{ current_user['username'] }}</p>
+            <p style="margin: 1em;">Name: {{ current_user['name'] }}</p>
+            <p style="margin: 1em;">Email: {{ current_user['email'] }}</p>
+            <p style="margin: 1em;">Bio: {{ current_user['bio'] }}</p>
+
+            {% if current_user['email'] != user_data['email'] %}
+            {% if user_data['email'] not in current_user['follower_list'] %}
+            <form action="/follow/{{ current_user['email'] }}" method="post">
+                <input type="submit" name="submit" value="Follow" class="formbutton">
+            </form>
+            {% elif user_data['email'] in current_user['follower_list'] %}
+            <form action="/unfollow/{{ current_user['email'] }}" method="post">
+                <input type="submit" name="submit" value="Unfollow" class="formbutton">
+            </form>
+            {% endif %}
+            {% endif %}
+        </div>
+        <div style="margin-left: 6em;">
+            <h3 style="text-align: left;">Tweets</h3>
+            {% for tweet in tweets %}
+                <div style="margin: 1em 1em; width: 764px; border-style: solid; border-color: grey;">
+                    <p style="text-align: left; padding: 1em;">{{ tweet['username'] }}:</p>
+                    <p style="text-align: left; padding: 1em;">" {{ tweet['tweet'] }} "</p>
+                    <p style="text-align: right; font-size: small; padding: 1em;">{{ tweet['time'] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

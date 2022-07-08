@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block main %}
+<main>
+    <section class="banner-area">
+        <h3>Welcome to Twitter</h3>
+        <div id="firebase-auth-container"></div>
+        <button id="sign-out" hidden="true">Sign out</button>
+        <div id="login-info" hidden="true">
+            <!--h2>Login Info</h2-->
+            {% if user_data %}
+            <p>Name: {{ user_info['username'] }}</p>
+            <p>Email: {{ user_data['email'] }}</p>
+            {% elif error_message %}
+            <p>Error Message: {{ error_message }}</p>
+            {% endif %}
+
+
+            {% if user_data %}
+            <section>
+                <form action="/search" method="post">
+                    <h3 style="display: inline-block;">Search</h3>
+                    <input type="text" name="search" placeholder="search">
+                    <input type="submit" name="submit" value="Find" class="formbutton">
+                </form>
+            </section>
+
+            <div style="margin-top: 3em;">
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <fieldset style="display: inline;">
+                        <legend style="padding: 1em; text-transform: uppercase; font-weight: 600;">
+                            Write a tweet
+                        </legend>
+
+                        <textarea name="tweet" id="tweet" cols="100" rows="4" placeholder="max 280 characters..."
+                            maxlength="280" style="max-width: 90%;"></textarea><br>
+                        <div style="display: flex; justify-content: right; margin-right: 2em;">
+                            <input type="file" name="file_name" />
+                            <input type="submit" name="submit" value="Post Tweet" class="formbutton"
+                                style="margin-right: 1em; margin-bottom: 1em;">
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+
+            <div style="margin-top: 3em;">
+                <h3>Feed</h3>
+                <hr>
+                <div>
+                    {% for tweet in tweets %}
+                    <div style="margin: 1em 25%; width: 764px; border-style: solid; border-color: grey;">
+                        <img src="{{ tweet['media'] }}" alt=""
+                            style="display: inline-block; max-width: 764px; max-height: 400px; margin: 1em; padding: 1em;">
+                        <p style="text-align: left; padding: 1em;">{{ tweet['username'] }}:</p>
+                        <p style="text-align: left; padding: 1em;">" {{ tweet['tweet'] }} "</p>
+                        <p style="text-align: right; font-size: small; padding: 1em;">{{ tweet['time'] }}</p>
+                        {% if tweet['username'] == user_info['username'] %}
+                        <div style="display: flex; justify-content: right;">
+                            <form action="/edit/{{ tweet['id'] }}" method="get">
+                                <input type="submit" name="submit" value="Edit" class="formbutton">
+                            </form>
+                            <form action="/delete/{{ tweet['id'] }}" method="post">
+                                <input type="submit" name="submit" value="Delete" class="formbutton">
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% elif error_message %}
+            <p>Error Message: {{ error_message }}</p>
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

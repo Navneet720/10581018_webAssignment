@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block main %}
+<main>
+    <section class="banner-area">
+        <h3>Searches for "{{ search }}"</h3>
+        <div>
+            <fieldset style="display: inline;">
+                <legend style="padding: 1em; text-transform: uppercase; font-weight: 600;">
+                    Users
+                </legend>
+                {% if users %}
+                {% for user in users %}
+                <div style="padding: 1em;">
+                    <a href="/user/{{ user['email'] }}" style="text-decoration: underline; color: crimson; font-weight: bold;">{{ user['username'] }}</a>
+                    <p>Name: {{ user['name'] }}</p>
+                    <p>Email: {{ user['email'] }}</p>
+                </div>
+                {% endfor %}
+                {% elif not users %}
+                <div style="padding: 1em;">
+                    <p style="margin: 1em;">No Users Found</p>
+                </div>
+                {% endif %}
+            </fieldset>
+        </div>
+        <div>
+            <fieldset style="display: inline;">
+                <legend style="padding: 1em; text-transform: uppercase; font-weight: 600;">
+                    Tweets
+                </legend>
+                {% if tweets %}
+                {% for tweet in tweets %}
+                <div style="margin: 1em 1em; width: 764px;">
+                    <p style="text-align: left; padding: 1em;">{{ tweet['username'] }}:</p>
+                    <p style="text-align: left; padding: 1em;">" {{ tweet['tweet'] }} "</p>
+                    <p style="text-align: right; font-size: small; padding: 1em;">{{ tweet['time'] }}</p>
+                </div>
+                {% endfor %}
+                {% elif not tweets %}
+                <div style="padding: 1em;">
+                    <p style="margin: 1em;">No Tweets Found</p>
+                </div>
+                {% endif %}
+            </fieldset>
+        </div>
+    </section>
+</main>
+{% endblock %}
