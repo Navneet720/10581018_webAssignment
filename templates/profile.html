@@ -4,29 +4,29 @@
     <section class="banner-area">
         <form action="/profile" method="post">
             
-            <fieldset style="display: inline;">
+            <fieldset style="">
                 <legend style="padding: 1em; text-transform: uppercase; font-weight: 600;">
-                    Edit Personal Information
+                    Edit Your Personal Information
                 </legend>
                 
                 <label for="username">Username: </label>
-                <input type="text" name="username" value="{{ user_info['username'] }}" style="margin-left: 1em;" readonly><br>
+                <input type="text" name="username" value="{{ user_info['username'] }}" style="margin-left: 1em;" readonly size="50"><br>
                 
-                <label for="name">Name: </label>
-                <input type="text" name="name" placeholder="Enter full name" value="{{ user_info['name'] }}" required style="margin-left: 1em;"><br>
+                <label for="name">Name:   </label>
+                <input type="text" name="name" placeholder="Enter full name" value="{{ user_info['name'] }}" required style="margin-left: 1em;" size="50"><br>
                 
                 <label for="bio" style="vertical-align: top; margin-top: 0.5em;">Bio: </label>
-                <textarea name="bio" id="bio" cols="20" rows="10" placeholder="max 280 characters..." maxlength="280">{{ user_info['bio'] }}</textarea><br>
+                <textarea name="bio" id="bio" cols="40" rows="10" placeholder="max 280 characters..." maxlength="280"width: 300px;>{{ user_info['bio'] }}</textarea><br>
 
                 <input type="submit" name="submit" value="Update Profile" class="formbutton" style="margin-right: 1em; margin-bottom: 1em">
             </fieldset>
         </form>
 
-        <div style="align-self: center; margin-top: 3em;">
+        <div style="margin-top: 3em;">
             <h3>Feed</h3>
             <hr>
             {% for tweet in tweets %}
-            <div style="margin: 1em 1em; width: 764px; border-style: solid; border-color: grey;">
+            <div style="margin: 1em 25%; width: 764px; border-style: solid; border-color: grey;  border-radius: 10px;     box-shadow: 0 0 10px #666;align-self: center;">
                 <img src="{{ tweet['media'] }}" alt="" 
                 style="display: inline-block; max-width: 764px; max-height: 400px; margin: 1em; padding: 1em;">
                 <p style="text-align: left; padding: 1em;">{{ tweet['username'] }}:</p>
