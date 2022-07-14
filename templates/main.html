@@ -13,6 +13,7 @@
             <p>Name: {{  user_info['username']  }}</p>
             
             <p>Email: {{ user_data['email'] }}</p>
+            <p>Role: {{ user_info['role'] }}</p>
             {% elif error_message %}
             <p>Error Message: {{ error_message }}</p>
             {% endif %}
@@ -63,8 +64,7 @@
                         maxlength="280" style="max-width: 90%;">{{ tweet['tweet'] }}</textarea><br>
                         <!-- <p style="text-align: left; padding: 1em;">Comments":<br> {{ tweet['tweet'] }} "</p> -->
                         <p style="text-align: right; font-size: small; padding: 1em;">{{ tweet['time'] }}</p>
-                        {% if tweet['username'] == user_info['username'] %}
-                        <div style="display: flex; justify-content: right;">
+                        {% if ((tweet['username'] == user_info['username']) or (user_info['role'] == 'Admin'))  %}                        <div style="display: flex; justify-content: right;">
                             <form action="/edit/{{ tweet['id'] }}" method="get">
                                 <input type="submit" name="submit" value="Edit" class="formbutton">
                             </form>

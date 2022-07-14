@@ -17,7 +17,8 @@
                 
                 <label for="bio" style="vertical-align: top; margin-top: 0.5em;">Bio: </label>
                 <textarea name="bio" id="bio" cols="40" rows="10" placeholder="max 280 characters..." maxlength="280"width: 300px;>{{ user_info['bio'] }}</textarea><br>
-
+                <label for="name">Role: </label>
+                <input type="text" name="role" placeholder="Admin" value="{{ user_info['role'] }}" disabled style="margin-left: 1em;"><br>
                 <input type="submit" name="submit" value="Update Profile" class="formbutton" style="margin-right: 1em; margin-bottom: 1em">
             </fieldset>
         </form>

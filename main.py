@@ -15,6 +15,11 @@ firebase_request_adapter = requests.Request()
 def createUserInfo(claims, username):
     entity_key = datastore_client.key('UserInfo', claims['email'])
     entity = datastore.Entity(key = entity_key)
+    if "navneetpandey7@gmail.com" in claims["email"]:
+        role = 'Admin'
+    else:
+        role = 'User'
+        
     if "name" in claims.keys():
         ssName = claims["name"]
     else:
@@ -23,6 +28,7 @@ def createUserInfo(claims, username):
         'email': claims['email'],
         'name': ssName,
         'bio': "",
+        "role": role,
         'username': username,
         'follower_list': [],
         'following_list': [],
@@ -320,7 +326,8 @@ def profile():
                 entity = datastore_client.get(entity_key)
                 entity.update({
                     'name': request.form['name'],
-                    'bio': request.form['bio']
+                    'bio': request.form['bio'],
+                    'role': request.form['role']
                 })
                 datastore_client.put(entity) 
             except ValueError as exc:
